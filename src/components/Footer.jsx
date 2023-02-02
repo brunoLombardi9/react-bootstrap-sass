@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Container, Row } from "react-bootstrap";
+import constants from "../constants";
 
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
-}
+  const logo = constants.logo;
+  const socialMedia = constants.footer.socialMedia;
+  const sections = constants.footer.sections;
+  const text = constants.footer.text;
 
-export default Footer
+  return (
+    <Container fluid className="bg-primary">
+      <Row className="mx-5"></Row>
+    </Container>
+  );
+};
+
+export default Footer;

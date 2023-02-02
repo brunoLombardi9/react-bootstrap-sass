@@ -1,6 +1,6 @@
 const constants = {
-  navbar: {
-    menuOptions: ["Home", "About", "Contact", "Blog", "Carees"],
+  topNav: {
+    options: ["Home", "About", "Contact", "Blog", "Carees"],
   },
 
   heroSection: {
@@ -50,28 +50,28 @@ const constants = {
       {
         picture: "../image-currency.jpg",
         author: "Claire Robinson",
-        articleTitle: "Recieve money in any currency with no fees",
+        title: "Recieve money in any currency with no fees",
         description:
           "The world is getting smaller and we´re getting more mobile, So why should you be forced to only recieve money in a single...",
       },
       {
         picture: "../image-restaurant.jpg",
         author: "Wilson Hutton",
-        articleTitle: "Treat yoursetf without worrying about money",
+        title: "Treat yoursetf without worrying about money",
         description:
           "Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you",
       },
       {
         picture: "../image-plane.jpg",
-        author: "Take your Easybank card wherever you go",
-        articleTitle: "",
+        author: "Wilson Hutton",
+        title: "Take your Easybank card wherever you go",
         description:
           "We want you to enjoy your travels. This is why we don´t charge any tees on purchases while you´re abroad. Well even show you",
       },
       {
         picture: "../image-confetti.jpg",
         author: "Claire Robinson",
-        articleTitle: "Our invite-only Beta accounts are now live!",
+        title: "Our invite-only Beta accounts are now live!",
         description:
           "After a lot of hard work by the whole team. we•re excited to launch our closed beta. It's easy to request an invite through the site",
       },

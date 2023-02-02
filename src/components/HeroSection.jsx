@@ -1,9 +1,52 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from "react";
+import { Col, Container, Image, Row } from "react-bootstrap";
+import constants from "../constants";
+import RequestInviteButton from "./RequestInviteButton";
 
 const HeroSection = () => {
-  return (
-    <div>HeroSection</div>
-  )
-}
+  const heroImageMobile = constants.heroSection.backgroundMobile;
+  const heroImageDeskTop = constants.heroSection.backgroundDesktop;
+  const mockups = constants.heroSection.mockups;
+  const sectionTitle = constants.heroSection.title;
+  const sectionDescription = constants.heroSection.description;
+  const [windowsWidth, setWindowsWidth] = useState(window.innerWidth);
+  const [heroImage, setHeroImage] = useState("");
 
-export default HeroSection
+  useLayoutEffect(() => {
+    windowsWidth >= 768
+      ? setHeroImage(heroImageDeskTop)
+      : setHeroImage(heroImageMobile);
+  }, [windowsWidth]);
+
+  window.onresize = () => setWindowsWidth(window.innerWidth);
+
+  return (
+    <Container fluid className="bg-veryLightGray">
+      <Row className="flex-column-reverse flex-md-row">
+        <Col
+          md="6"
+          className="d-flex flex-column justify-content-center align-content-center"
+        >
+          <h1 className="text-center">{sectionTitle}</h1>
+          <h2 className="text-center">{sectionDescription}</h2>
+
+          <div className="mx-auto">
+            <RequestInviteButton />
+          </div>
+        </Col>
+        <Col
+          md="6"
+          style={{
+            backgroundImage: `url(${heroImage}`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <Image src={mockups} fluid alt="" />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default HeroSection;
