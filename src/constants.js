@@ -1,6 +1,8 @@
 const constants = {
   topNav: {
     options: ["Home", "About", "Contact", "Blog", "Carees"],
+    hamburguerButton: "../icon-hamburger.svg",
+    closeButton: "../icon-close.svg"
   },
 
   heroSection: {
