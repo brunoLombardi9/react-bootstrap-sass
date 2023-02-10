@@ -13,11 +13,19 @@ const TopNav = () => {
   const hamburguerBtn = constants.topNav.hamburguerButton;
   const closeBtn = constants.topNav.closeButton;
   const [navIcon, setNavIcon] = useState();
+  const [collapsedMenuSeperation, setCollapsedMenuSeparation] = useState();
+  const [windowsHeight, setWindowsHeight] = useState(window.innerHeight);
   const [isActive, setIsActive] = useState(false);
 
   useLayoutEffect(() => {
     isActive ? setNavIcon(closeBtn) : setNavIcon(hamburguerBtn);
   }, [isActive]);
+
+  useLayoutEffect(() => {
+    windowsHeight < 480
+      ? setCollapsedMenuSeparation("top-60")
+      : setCollapsedMenuSeparation("top-40");
+  }, [windowsHeight]);
 
   function handleNavOptions() {
     isActive ? setIsActive(false) : setIsActive(true);
@@ -35,11 +43,15 @@ const TopNav = () => {
 
   const OptionsContainer = () => {
     return (
-      <Container className="d-sm-block d-lg-none position-absolute top-50 start-50 translate-middle bg-white text-center w-75 p-3">
+      <Container
+        className={`d-sm-block d-lg-none position-absolute ${collapsedMenuSeperation} start-50 translate-middle bg-white text-center w-75 p-3 rounded`}
+      >
         <Options />
       </Container>
     );
   };
+
+  window.onresize = () => setWindowsHeight(window.innerHeight);
 
   return (
     <>
