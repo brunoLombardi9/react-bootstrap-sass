@@ -16,9 +16,15 @@ const HeroSection = () => {
     windowsWidth >= 768
       ? setHeroImage(heroImageDeskTop)
       : setHeroImage(heroImageMobile);
-  }, [windowsWidth]);
 
-  window.onresize = () => setWindowsWidth(window.innerWidth);
+    window.addEventListener("resize", () => setWindowsWidth(window.innerWidth));
+
+    return () => {
+      window.removeEventListener("resize", () =>
+        setWindowsWidth(window.innerWidth)
+      );
+    };
+  }, [windowsWidth]);
 
   return (
     <Container fluid className="bg-veryLightGray">
@@ -42,7 +48,7 @@ const HeroSection = () => {
             backgroundPosition: "center",
           }}
         >
-          <Image src={mockups} fluid alt="" />
+          <Image src={mockups} fluid alt="mockups" />
         </Col>
       </Row>
     </Container>

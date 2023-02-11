@@ -23,8 +23,18 @@ const TopNav = () => {
 
   useLayoutEffect(() => {
     windowsHeight < 480
-      ? setCollapsedMenuSeparation("top-60")
+      ? setCollapsedMenuSeparation("top-80")
       : setCollapsedMenuSeparation("top-40");
+
+    window.addEventListener("resize", () =>
+      setWindowsHeight(window.innerHeight)
+    );
+
+    return () => {
+      window.removeEventListener("resize", () =>
+        setWindowsHeight(window.innerHeight)
+      );
+    };
   }, [windowsHeight]);
 
   function handleNavOptions() {
@@ -43,15 +53,13 @@ const TopNav = () => {
 
   const OptionsContainer = () => {
     return (
-      <Container
+      <Nav
         className={`d-sm-block d-lg-none position-absolute ${collapsedMenuSeperation} start-50 translate-middle bg-white text-center w-75 p-3 rounded`}
       >
         <Options />
-      </Container>
+      </Nav>
     );
   };
-
-  window.onresize = () => setWindowsHeight(window.innerHeight);
 
   return (
     <>
@@ -62,6 +70,7 @@ const TopNav = () => {
             src={navIcon}
             onClick={handleNavOptions}
             className="p-2 d-block d-lg-none"
+            style={{height: "35px", maxWidth:"45px"}}
           />
 
           <Nav className="mx-auto d-none d-lg-flex">
